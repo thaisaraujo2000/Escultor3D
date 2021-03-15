@@ -130,4 +130,5 @@ void Sculptor::writeOFF(char *filename){
       }
     }
     f.close();
+    cout << "Função WriteOFF finalizada" << endl;
 }
