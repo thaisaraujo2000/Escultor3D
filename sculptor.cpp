@@ -3,6 +3,7 @@
 #include <iostream>
 #include <iomanip>
 #include <cstdlib>
+#include <cmath>
 
 using namespace std;
 
@@ -80,6 +81,126 @@ void Sculptor::cutBox(int x0, int x1, int y0, int y1, int z0, int z1)
             }
         }
     }
+}
+
+void Sculptor::putSphere(int xcenter, int ycenter, int zcenter, int radius)
+{
+    double d;
+    for(int i = 0; i < nx; i++){
+        for(int j = 0; j < ny; j++){
+            for(int k = 0; k < nz; k++){
+                d = pow(i - xcenter,2) + pow(j - ycenter,2) + pow(k - zcenter,2);
+                if (d <= pow(radius,2)){
+                    putVoxel(i,j,k);
+                }
+            }
+        }
+    }
+}
+
+void Sculptor::cutSphere(int xcenter, int ycenter, int zcenter, int radius)
+{
+    double d;
+    for(int i = 0; i < nx; i++){
+        for(int j = 0; j < ny; j++){
+            for(int k = 0; k < nz; k++){
+                d = pow(i - xcenter,2) + pow(j - ycenter,2) + pow(k - zcenter,2);
+                if (d <= pow(radius,2)){
+                    cutVoxel(i,j,k);
+                }
+            }
+        }
+    }
+}
+
+void Sculptor::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz)
+{
+    double d;
+       if(rx == 0){
+           for(int j=0; j<=ny; j++){
+               for(int k=0; k<=nz; k++){
+                   d = pow(j-ycenter, 2)/pow(ry, 2) + pow(k-zcenter, 2)/pow(rz, 2);
+                   if(d <=1){
+                       putVoxel(xcenter, j, k);
+                   }
+               }
+            }
+       }else if(ry == 0){
+           for(int i=0; i<=nx; i++){
+               for(int k=0; k<=nz; k++){
+                   d = pow(i-xcenter, 2)/pow(rx, 2) + pow(k-zcenter, 2)/pow(rz, 2);
+                   if(d <=1){
+                       putVoxel(i,ycenter,k); //habilita os Voxels no intervalo
+                   }
+               }
+            }
+
+       }else if(rz == 0){
+           for(int i=0; i<=nx; i++){
+               for(int j=0; j<=ny; j++){
+                   d = pow(i-xcenter, 2)/pow(rx, 2) + pow(j-ycenter, 2)/pow(ry, 2);
+                   if(d <=1){
+                       putVoxel(i, j, zcenter); //habilita os Voxels no intervalo
+                   }
+               }
+            }
+       }else{
+           for(int i = 0; i < nx; i++){
+               for(int j = 0; j < ny; j++){
+                   for(int k = 0; k < nz; k++){
+                       d = pow(i - xcenter,2)/pow(rx, 2) + pow(j - ycenter,2)/pow(ry, 2) + pow(k - zcenter,2)/pow(rz, 2);
+                       if (d <= 1){
+                           putVoxel(i,j,k);
+                       }
+                   }
+               }
+           }
+       }
+}
+
+void Sculptor::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz)
+{
+    double d;
+       if(rx == 0){
+           for(int j=0; j<=ny; j++){
+               for(int k=0; k<=nz; k++){
+                   d = pow(j-ycenter, 2)/pow(ry, 2) + pow(k-zcenter, 2)/pow(rz, 2);
+                   if(d <=1){
+                       cutVoxel(xcenter, j, k);
+                   }
+               }
+            }
+       }else if(ry == 0){
+           for(int i=0; i<=nx; i++){
+               for(int k=0; k<=nz; k++){
+                   d = pow(i-xcenter, 2)/pow(rx, 2) + pow(k-zcenter, 2)/pow(rz, 2);
+                   if(d <=1){
+                       cutVoxel(i,ycenter,k); //habilita os Voxels no intervalo
+                   }
+               }
+            }
+
+       }else if(rz == 0){
+           for(int i=0; i<=nx; i++){
+               for(int j=0; j<=ny; j++){
+                   d = pow(i-xcenter, 2)/pow(rx, 2) + pow(j-ycenter, 2)/pow(ry, 2);
+                   if(d <=1){
+                       cutVoxel(i, j, zcenter); //habilita os Voxels no intervalo
+                   }
+               }
+            }
+       }else{
+           for(int i = 0; i < nx; i++){
+               for(int j = 0; j < ny; j++){
+                   for(int k = 0; k < nz; k++){
+                       d = pow(i - xcenter,2)/pow(rx, 2) + pow(j - ycenter,2)/pow(ry, 2) + pow(k - zcenter,2)/pow(rz, 2);
+                       if (d <= 1){
+                           cutVoxel(i,j,k);
+                       }
+                   }
+               }
+           }
+       }
 }
 
 
