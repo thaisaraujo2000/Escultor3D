@@ -11,6 +11,26 @@ Sculptor::Sculptor(int _nx, int _ny, int _nz)
     nx = _nx;
     ny = _ny;
     nz = _nz;
+    v = new Voxel**[nx];
+    for(int i=0; i<nx; i++){
+        v[i] = new Voxel*[ny];
+        for(int j=0; j<ny; j++){
+            v[i][j] = new Voxel[nz];
+        }
+    }
+    for(int i=0; i<nx; i++){
+        for(int j = 0; j < ny; j++){
+            for(int k = 0; k < nz; k++){
+                v[i][j][k].isOn = false;
+            }
+        }
+    }
+}
+
+void Sculptor::setColor(float _r, float _g, float _b){
+    r = _r;
+    g = _g;
+    b = _b;
 }
 
 void Sculptor::cutVoxel(int x0, int y0, int z0){
@@ -24,11 +44,7 @@ void Sculptor::putVoxel(int x0, int y0, int z0){
     v[x0][y0][z0].b = b;
 }
 
-void setColor(float r, float g, float b){
-    r = r;
-    g = g;
-    b = b;
-}
+
 
 void Sculptor::writeOFF(char *filename){
     int total, index, x, y, z;

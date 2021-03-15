@@ -10,14 +10,13 @@ struct Voxel {
 
 class Sculptor {
 protected:
-  Voxel ***v;
-  // 3D matrix
-  int nx,ny,nz; // Dimensions
-  float r_,g_,b_; // Current drawing color
+  Voxel ***v; //Matriz 3D
+  int nx,ny,nz; // Dimensões da matriz
+  float r,g,b; // Cores da matriz
 public:
   Sculptor(int _nx, int _ny, int _nz);
   ~Sculptor();
-  void setColor(float r, float g, float b);
+  void setColor(float _r, float _g, float _b);
   void putVoxel(int x, int y, int z);
   void cutVoxel(int x, int y, int z);
   void putBox(int x0, int x1, int y0, int y1, int z0, int z1);
@@ -28,3 +27,5 @@ public:
   void cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);
   void writeOFF(char *filename);
 };
+
+#endif
