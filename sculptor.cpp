@@ -27,6 +27,19 @@ Sculptor::Sculptor(int _nx, int _ny, int _nz)
     }
 }
 
+Sculptor::~Sculptor()
+{
+    for (int x = 0; x < nx; x++) {
+       for (int y = 0; y < ny; y++) {
+         delete[] v[x][y];
+       }
+     }
+     for (int x = 0; x < nx; x++) {
+       delete[] v[x];
+     }
+     delete[] v;
+}
+
 void Sculptor::setColor(float _r, float _g, float _b){
     r = _r;
     g = _g;
