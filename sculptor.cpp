@@ -50,11 +50,36 @@ void Sculptor::cutVoxel(int x0, int y0, int z0){
     v[x0][y0][z0].isOn = false;
 }
 
+
 void Sculptor::putVoxel(int x0, int y0, int z0){
     v[x0][y0][z0].isOn = true;
     v[x0][y0][z0].r = r;
     v[x0][y0][z0].g = g;
     v[x0][y0][z0].b = b;
+}
+
+void Sculptor::putBox(int x0, int x1, int y0, int y1, int z0, int z1)
+{
+    for (int i = x0; i <= x1; i++){
+        for(int j = y0; j <= y1; j++){
+            for (int k = z0; k <= z1; k++){
+                putVoxel(i,j,k);
+
+            }
+        }
+    }
+}
+
+void Sculptor::cutBox(int x0, int x1, int y0, int y1, int z0, int z1)
+{
+    for (int i = x0; i <= x1; i++){
+        for(int j = y0; j <= y1; j++){
+            for (int k = z0; k <= z1; k++){
+                cutVoxel(i,j,k);
+
+            }
+        }
+    }
 }
 
 
@@ -103,32 +128,31 @@ void Sculptor::writeOFF(char *filename){
         for(z=0;z<nz;z++){
           if(v[x][y][z].isOn == true){
             index = total*8;
-        //face 0
-        f << fixed;
-        f << 4 << " " << index + 0 << " " << index + 3 << " " << index+2 << " " << index+1 << " ";
-        f << setprecision(2) << v[x][y][z].r << " " << setprecision(2) << v[x][y][z].g << " " << setprecision(2) << v[x][y][z].b << "\n";
-        //face 1
-        f << 4 << " " << index + 4 << " " << index + 5 << " " << index+6 << " " << index+7 << " ";
-        f << setprecision(2) << v[x][y][z].r << " " << setprecision(2) << v[x][y][z].g << " " << setprecision(2) << v[x][y][z].b << "\n";
-        //face 2
-        f << 4 << " " << index + 0 << " " << index + 1 << " " << index+5 << " " << index+4 << " ";
-        f << setprecision(2) << v[x][y][z].r << " " << setprecision(2) << v[x][y][z].g << " " << setprecision(2) << v[x][y][z].b << "\n";
-        //face 3
-        f << 4 << " " << index + 0 << " " << index + 4 << " " << index+7 << " " << index+3 << " ";
-        f << setprecision(2) << v[x][y][z].r << " " << setprecision(2) << v[x][y][z].g << " " << setprecision(2) << v[x][y][z].b << "\n";
-        //face 4
-        f << 4 << " " << index + 3 << " " << index + 7 << " " << index+6 << " " << index+2 << " ";
-        f << setprecision(2) << v[x][y][z].r << " " << setprecision(2) << v[x][y][z].g << " " << setprecision(2) << v[x][y][z].b << "\n";
-        //face 5
-        f << 4 << " " << index + 1 << " " << index + 2 << " " << index+6 << " " << index+5 << " ";
-        f << setprecision(2) << v[x][y][z].r << " " << setprecision(2) << v[x][y][z].g << " " << setprecision(2) << v[x][y][z].b << "\n";
-        //incrementa total de cubos
-        total++;
+            //face 0
+            f << fixed;
+            f << 4 << " " << index + 0 << " " << index + 3 << " " << index+2 << " " << index+1 << " ";
+            f << setprecision(2) << v[x][y][z].r << " " << setprecision(2) << v[x][y][z].g << " " << setprecision(2) << v[x][y][z].b << "\n";
+            //face 1
+            f << 4 << " " << index + 4 << " " << index + 5 << " " << index+6 << " " << index+7 << " ";
+            f << setprecision(2) << v[x][y][z].r << " " << setprecision(2) << v[x][y][z].g << " " << setprecision(2) << v[x][y][z].b << "\n";
+            //face 2
+            f << 4 << " " << index + 0 << " " << index + 1 << " " << index+5 << " " << index+4 << " ";
+            f << setprecision(2) << v[x][y][z].r << " " << setprecision(2) << v[x][y][z].g << " " << setprecision(2) << v[x][y][z].b << "\n";
+            //face 3
+            f << 4 << " " << index + 0 << " " << index + 4 << " " << index+7 << " " << index+3 << " ";
+            f << setprecision(2) << v[x][y][z].r << " " << setprecision(2) << v[x][y][z].g << " " << setprecision(2) << v[x][y][z].b << "\n";
+            //face 4
+            f << 4 << " " << index + 3 << " " << index + 7 << " " << index+6 << " " << index+2 << " ";
+            f << setprecision(2) << v[x][y][z].r << " " << setprecision(2) << v[x][y][z].g << " " << setprecision(2) << v[x][y][z].b << "\n";
+            //face 5
+            f << 4 << " " << index + 1 << " " << index + 2 << " " << index+6 << " " << index+5 << " ";
+            f << setprecision(2) << v[x][y][z].r << " " << setprecision(2) << v[x][y][z].g << " " << setprecision(2) << v[x][y][z].b << "\n";
+            //incrementa total de cubos
+            total++;
 
           }
         }
       }
     }
     f.close();
-    cout << "Função WriteOFF finalizada" << endl;
 }
