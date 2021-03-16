@@ -212,16 +212,96 @@ int main()
     for(int i = -3; i <=3; i++){
         pucca.putVoxel(c+i, c-4, c-2);
     }
+
     for(int i = -3; i <=3; i++){
         pucca.putVoxel(c+i, c-5, c-2);
     }
 
+    for(int i = 4; i <=6; i++){
+        pucca.putVoxel(c+i, c-5, c-1);
+        pucca.putVoxel(c-i, c-5, c-1);
+    }
 
+    for(int i = 5; i <=6; i++){
+        pucca.putVoxel(c+i, c-5, c);
+        pucca.putVoxel(c-i, c-5, c);
+    }
 
+    for(int i = 5; i <=6; i++){
+        pucca.putVoxel(c+i, c-5, c);
+        pucca.putVoxel(c-i, c-5, c);
+    }
 
+    for(int i = 4; i <=6; i++){
+        pucca.putVoxel(c+i, c-3, c-2);
+        pucca.putVoxel(c-i, c-3, c-2);
+        pucca.putVoxel(c+i, c-4, c-2);
+        pucca.putVoxel(c-i, c-4, c-2);
+    }
 
+    for(int i = 4; i <=6; i++){
+        pucca.putVoxel(c+i, c-3, c-2);
+        pucca.putVoxel(c-i, c-3, c-2);
+        pucca.putVoxel(c+i, c-4, c-2);
+        pucca.putVoxel(c-i, c-4, c-2);
+    }
 
+    for(int i = 6; i <=8; i++){
+        pucca.putVoxel(c+i, c-2, c);
+        pucca.putVoxel(c-i, c-2, c);
+        pucca.putVoxel(c+i, c-3, c);
+        pucca.putVoxel(c-i, c-3, c);
+    }
+
+    pucca.putVoxel(c+8, c-2, c-1);
+    pucca.putVoxel(c+8, c-3, c-1);
+
+    pucca.putVoxel(c-8, c-2, c-1);
+    pucca.putVoxel(c-8, c-3, c-1);
+
+    pucca.putVoxel(c+7, c-4, c-1);
+    pucca.putVoxel(c-7, c-4, c-1);
+
+    pucca.putVoxel(c+7, c-4, c);
+    pucca.putVoxel(c-7, c-4, c);
+
+    pucca.putVoxel(c+7, c-3, c-2);
+    pucca.putVoxel(c-7, c-3, c-2);
+
+    //vestido da pucca
+    pucca.setColor(1,0,0);
+    pucca.putBox(c-4,c+4,c-13,c-7,c-1,c+1);
+    for(int z = -1; z <= 1; z++){
+        pucca.putVoxel(c+5, c-7, c+z);
+        pucca.putVoxel(c-5, c-7, c+z);
+        pucca.putVoxel(c+5, c-8, c+z);
+        pucca.putVoxel(c-5, c-8, c+z);
+        pucca.putVoxel(c+5, c-9, c+z);
+        pucca.putVoxel(c-5, c-9, c+z);
+        pucca.putVoxel(c+6, c-8, c+z);
+        pucca.putVoxel(c-6, c-8, c+z);
+        pucca.putVoxel(c+6, c-9, c+z);
+        pucca.putVoxel(c-6, c-9, c+z);
+    }
+    //mãos da pucca
+    pucca.setColor(10,55,84);
+    for(int z = -1; z <= 1; z++){
+        pucca.putVoxel(c-6, c-10, c+z);
+        pucca.putVoxel(c+6, c-10, c+z);
+        pucca.putVoxel(c-5, c-10, c+z);
+        pucca.putVoxel(c+5, c-10, c+z);
+        pucca.putVoxel(c-6, c-11, c+z);
+        pucca.putVoxel(c+6, c-11, c+z);
+        pucca.putVoxel(c-5, c-11, c+z);
+        pucca.putVoxel(c+5, c-11, c+z);
+    }
+
+    //pernas da pucca
+    pucca.setColor(255,255,255);
+    pucca.putBox(c-3, c-1, c-17, c-14, c-1, c+1);
+    pucca.putBox(c+1, c+3, c-17, c-14, c-1, c+1);
     pucca.writeOFF((char*)"C:/Users/Thais/Documents/pucca.off");
+
     cout << "Programa finalizado com sucesso" << endl;
     return 0;
 }
