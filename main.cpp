@@ -167,37 +167,13 @@ int main()
 
     for(int i = 1; i >=-2; i--){
         pucca.putVoxel(c+9, c+i, c+0);
-    }
-
-    for(int i = 1; i >=-2; i--){
         pucca.putVoxel(c-9, c+i, c+0);
-    }
-
-    for(int i = 1; i >=-2; i--){
         pucca.putVoxel(c+9, c+i, c-1);
-    }
-
-    for(int i = 1; i >=-2; i--){
         pucca.putVoxel(c-9, c+i, c-1);
-    }
-
-    for(int i = 1; i >=-2; i--){
         pucca.putVoxel(c-9, c+i, c-2);
-    }
-
-    for(int i = 1; i >=-2; i--){
         pucca.putVoxel(c+8, c+i, c-2);
-    }
-
-    for(int i = 1; i >=-2; i--){
         pucca.putVoxel(c-8, c+i, c-2);
-    }
-
-    for(int i = 1; i >=-2; i--){
         pucca.putVoxel(c+7, c+i, c-2);
-    }
-
-    for(int i = 1; i >=-2; i--){
         pucca.putVoxel(c-7, c+i, c-2);
     }
 
@@ -207,13 +183,7 @@ int main()
 
     for(int i = -3; i <=3; i++){
         pucca.putVoxel(c+i, c-6, c-1);
-    }
-
-    for(int i = -3; i <=3; i++){
         pucca.putVoxel(c+i, c-4, c-2);
-    }
-
-    for(int i = -3; i <=3; i++){
         pucca.putVoxel(c+i, c-5, c-2);
     }
 
@@ -300,7 +270,7 @@ int main()
     pucca.setColor(255,255,255);
     pucca.putBox(c-3, c-1, c-17, c-14, c-1, c+1);
     pucca.putBox(c+1, c+3, c-17, c-14, c-1, c+1);
-    pucca.writeOFF((char*)"C:/Users/Thais/Documents/pucca.off");
+    pucca.writeOFF((char*)"D:/pucca.off");
 
     cout << "Programa finalizado com sucesso" << endl;
     return 0;
