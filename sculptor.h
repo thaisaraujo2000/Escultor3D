@@ -7,7 +7,7 @@
  */
 struct Voxel {
   float r,g,b; // Colors
-// Transparency
+
   bool isOn; // Included or not
 };
 
