@@ -270,7 +270,7 @@ int main()
     pucca.setColor(255,255,255);
     pucca.putBox(c-3, c-1, c-17, c-14, c-1, c+1);
     pucca.putBox(c+1, c+3, c-17, c-14, c-1, c+1);
-    pucca.writeOFF((char*)"D:/pucca.off");
+    pucca.writeOFF((char*)"C:/Users/Thais/Documents/Escultor3D/pucca.off");
 
     cout << "Programa finalizado com sucesso" << endl;
     return 0;
